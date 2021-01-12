@@ -156,27 +156,6 @@ contract LUSH_DOC_v02 {
     }
     function setStringData(bytes32 key, string memory value) public {
         user_dataList[msg.sender][key] = value;
-    }
-    
-    function token_mint(address account) public returns (bool){
-        require(isInit == 0 , "Token already mint!");
-        require(account != address(0), "ERC20: mint to the zero address");
-        last_useVersion = "First Ver";
-        managerDetail memory isManager = managerDetail("First Admin", 100);
-        Managers[account] = isManager;
-
-        admin               = account;
-        _name               = "Rush coin";
-        _symbol             = "RUSH";
-        _decimals           = 18;
-        uint256 INIT_SUPPLY = 3000000000 * (10 ** uint256(_decimals));
-
-        _totalSupply = INIT_SUPPLY;
-        _balances[account] = INIT_SUPPLY;
-        managerList.push(account);
-        isInit = 1;
-        emit Transfer(address(0), account, _totalSupply);
-        return true;
-    }
+    }   
 
 }
